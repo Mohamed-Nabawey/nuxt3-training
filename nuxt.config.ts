@@ -32,15 +32,15 @@ export default defineNuxtConfig({
 
   // pre-render specific routes configs
   // use npx nuxt build to generate the HTML files.
-  nitro: {
-    prerender: {
-      routes: ['/about'] // specify the routes you want to pre-render
-    }
-  }
+  // nitro: {
+  //   prerender: {
+  //     routes: ['/about'] // specify the routes you want to pre-render
+  //   }
+  // }
 
   // pre-render all routes SSG (static site generation) configs
   // HTML files are generated at build time
-  // nitro: {
-  //   static: true,
-  // },
+  nitro: {
+    static: true,
+  },
 })
