@@ -14,7 +14,7 @@ const store = useCounterStore();
 
 <template>
     <div id="main">
-        <p> Custom page - build test</p>
+        <p> Custom page - build test v01</p>
     </div>
 
     <div> Counter = {{ counter }}</div>
