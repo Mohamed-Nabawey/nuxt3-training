@@ -38,11 +38,11 @@ export default defineNuxtConfig({
 
   // pre-render specific routes configs
   // use npx nuxt build to generate the HTML files.
-  // nitro: {
-  //   prerender: {
-  //     routes: ['/about']
-  //   }
-  // },
+  nitro: {
+    prerender: {
+      routes: ['/about']
+    }
+  },
 
   // try to genereate only about pages failed
   // npm run generate -- --route /about
@@ -54,10 +54,10 @@ export default defineNuxtConfig({
   // Enable ISR (Incremental Static Regeneration)
   // ISR means : Pages are generated on-demand when first requested, then cached and reused for subsequent requests.
   // Only the pages that have changed are regenerated, the rest remain cached.
-  routeRules: {
-   // all routes will be background revalidated (ISR) at most every 60 seconds
-   '/**': { isr: 60 },
-   // this page will be generated on demand and cached permanently
-   '/about': { isr: true }
-  },
+  // routeRules: {
+  //  // all routes will be background revalidated (ISR) at most every 60 seconds
+  //  '/**': { isr: 60 },
+  //  // this page will be generated on demand and cached permanently
+  //  '/about': { isr: true }
+  // },
 })
