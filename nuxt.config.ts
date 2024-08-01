@@ -30,17 +30,34 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
 
+  // pre-render all routes SSG (static site generation) configs
+  // HTML files are generated at build time
+  // nitro: {
+  //   static: true,
+  // },
+
   // pre-render specific routes configs
   // use npx nuxt build to generate the HTML files.
   // nitro: {
   //   prerender: {
-  //     routes: ['/about'] // specify the routes you want to pre-render
+  //     routes: ['/about']
   //   }
-  // }
+  // },
 
-  // pre-render all routes SSG (static site generation) configs
-  // HTML files are generated at build time
-  nitro: {
-    static: true,
+  // try to genereate only about pages failed
+  // npm run generate -- --route /about
+  // generate: {
+  //   dir: '/about', 
+  // },
+
+
+  // Enable ISR (Incremental Static Regeneration)
+  // ISR means : Pages are generated on-demand when first requested, then cached and reused for subsequent requests.
+  // Only the pages that have changed are regenerated, the rest remain cached.
+  routeRules: {
+   // all routes will be background revalidated (ISR) at most every 60 seconds
+   '/**': { isr: 60 },
+   // this page will be generated on demand and cached permanently
+   '/about': { isr: true }
   },
 })
