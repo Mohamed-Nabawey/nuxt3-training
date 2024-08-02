@@ -18,6 +18,6 @@
 
   <script setup>
 
-  const title = ref('About V07');
+  const title = ref('About V08');
   console.log(title);
 </script>
