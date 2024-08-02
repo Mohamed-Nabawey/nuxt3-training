@@ -50,12 +50,12 @@ export default defineNuxtConfig({
   //   dir: '/about', 
   // },
 
-  routeRules: {
-    // all routes will be background revalidated (ISR) at most every 60 seconds
-    '/**': { isr: 60000 },
-    // this page will be generated on demand and cached permanently
-    '/about': { isr: true }
-  },
+  // routeRules: {
+  //   // all routes will be background revalidated (ISR) at most every 60 seconds
+  //   '/**': { isr: 60000 },
+  //   // this page will be generated on demand and cached permanently
+  //   '/about': { isr: true }
+  // },
 
 
   // Enable ISR (Incremental Static Regeneration)
