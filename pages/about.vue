@@ -18,6 +18,6 @@
 
   <script setup>
 
-  const title = ref('About v10');
+  const title = ref('About v11 - partial deploy');
   console.log(title);
 </script>

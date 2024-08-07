@@ -1,0 +1,1 @@
+import{e as t,c as s,t as a,P as r,o as n}from"./DnAsYmUB.js";const c={__name:"[id]",setup(u){const o=t();return console.log("route",o),(e,i)=>(n(),s("div",null," event with id = "+a((e._.provides[r]||e.$route).params.id),1))}};export{c as default};
