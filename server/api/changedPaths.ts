@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
     return {
         api: [
             '/about',
-            '/custom'
+            '/'
         ],
     }
   })

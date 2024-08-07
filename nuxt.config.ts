@@ -2,6 +2,7 @@
 import { resolve } from 'path';
 
 import { defineNuxtConfig } from '@nuxt/bridge';
+// import nitroConfig from './nitro.config';
 export default defineNuxtConfig({
   app: {
     head: {
@@ -32,17 +33,18 @@ export default defineNuxtConfig({
 
  // pre-render all routes SSG (static site generation) configs
   // HTML files are generated at build time
-  // nitro: {
-  //   static: true,
-  // },
+  nitro: {
+    static: true,
+  },
+  // ...nitroConfig
 
   // pre-render specific routes configs
   // use npx nuxt build to generate the HTML files.
-  nitro: {
-    prerender: {
-      routes: ['/about']
-    }
-  },
+  // nitro: {
+  //   prerender: {
+  //     routes: ['/about']
+  //   }
+  // },
 
   
   // import nitro config to add custom hooks
