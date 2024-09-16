@@ -1,38 +1,35 @@
-// import { defineNuxtConfig } from '@nuxt/bridge';
-// import fetch from 'node-fetch';
+import { defineNuxtConfig } from '@nuxt/bridge';
+import axios from 'axios';
 
-// let changedRoutes: string[] = [];
+const mainRoute = ['/'];
 
-// const fetchChangedRoutes = async () => {
-//   try {
-//     const response = await fetch('https://nuxt3-training-two.vercel.app/api/changedPaths');
-//     if (response.ok) {
-//       changedRoutes = await response.json() as string[];
-//       console.log('Fetched changed routes:', changedRoutes);
-//     } else {
-//       console.error('Failed to fetch changed routes:', response.statusText);
-//     }
-//   } catch (error) {
-//     console.error('Error fetching changed routes:', error);
-//   }
-// };
+export default defineNuxtConfig({
+  nitro: {
+    hooks: {
+      async "prerender:generate"(route) {
+        console.log('route =', route);
+        let changedRoutes = [];
+        let prerenderAllSite = false;
+        try {
+          const response = await axios.get('http://localhost:3000/api/changedRoutes');
+          changedRoutes = response.data.api;
+          prerenderAllSite = response.data.prerenderAllSite;
+        } catch (error) {
+          console.error('Error fetching changedRoutes:', error);
+        }
 
-// // Fetch the changed routes before the Nitro hooks are executed
-// fetchChangedRoutes();
+        if (prerenderAllSite) {
+          console.log('changedRoutes is empty, continuing prerendering all routes.');
+          return;
+        }
 
-// export default defineNuxtConfig({
-//   nitro: {
-//     hooks: {
-//       "prerender:generate"(route) {
-//         console.log('in nitro hook for route: ', route.route);
-
-//         if (changedRoutes.includes(route.route)) {
-//           console.log('Prerendering route: ', route.route);
-//         } else {
-//           console.log('Skipping prerender for route: ', route.route);
-//           route.skip = true;
-//         }
-//       },
-//     },
-//   },
-// });
+        if (mainRoute.includes(route.route) || changedRoutes.some((changedRoute: string) => route.fileName?.includes(changedRoute))) {
+          console.log('Prerendering route:', route.route);
+        } else {
+          console.log('Skipping prerender for route:', route.route);
+          route.skip = true;
+        }
+      },
+    },
+  },
+});

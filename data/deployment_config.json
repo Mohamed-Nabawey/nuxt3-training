@@ -1,0 +1,4 @@
+{
+    "prerenderAllSite": true,
+    "api": ["/about", "/hafez"]
+}
