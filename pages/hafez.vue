@@ -1,6 +1,7 @@
 <template>
     <div>
       <h2>{{ data }} </h2>
+      <h2> V00 </h2>
       <div> </div>
     </div>
 </template>

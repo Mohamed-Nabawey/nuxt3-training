@@ -18,6 +18,6 @@
 
 <script setup>
 
-const title = ref('Home Page V10');
+const title = ref('Home Page V00');
 console.log(title);
 </script>
