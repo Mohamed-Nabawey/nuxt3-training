@@ -11,8 +11,8 @@ export default defineNuxtConfig({
         let changedRoutes = [];
         let prerenderAllSite = false;
         try {
-          const response = await axios.get('http://localhost:3000/api/changedRoutes');
-          changedRoutes = response.data.api;
+          const response = await axios.get('http://localhost:3000/get-routes');
+          changedRoutes = response.data.routes;
           prerenderAllSite = response.data.prerenderAllSite;
         } catch (error) {
           console.error('Error fetching changedRoutes:', error);
